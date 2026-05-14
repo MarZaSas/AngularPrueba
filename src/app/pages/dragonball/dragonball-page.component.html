@@ -1,0 +1,39 @@
+
+<h1>DragonBall page</h1>
+
+<hr>
+
+<section class="row">
+  <div class="col-12 col-sm-6">
+    <h3>Agregar: {{name()}}</h3>
+    <input type="text" class="form-control" placeholder="Nombre:" [value]="name()" (input)="name.set(txtName.value)" #txtName>
+
+    <h3>{{power()}}</h3>
+    <input type="number" class="form-control mt-2" placeholder="Poder:" [value]="power()" (input)="power.set(+powerValue.value)" #powerValue>
+
+    <button (click)="addCharacter(name(),power())" class="mt-2 btn btn-primary">Agregar</button>
+  </div>
+
+
+
+  <div class="col-12 col-sm-6">
+    <h3>Listado fuertes</h3>
+    <ul>
+      @for (char of characters(); track char.id; let idx = $index) {
+        @if (char.power > 500) {
+          <li id="listFuertes">
+          <span>{{idx}} - {{char.name}} - </span>
+          <strong
+
+          [class.text-danger]="char.power > 9000"
+          [class.text-info]="char.power < 9000"
+
+          >({{char.power}})</strong>
+        </li>
+        }
+
+      }
+
+    </ul>
+  </div>
+</section>
