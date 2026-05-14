@@ -1,0 +1,18 @@
+<h3>{{listName()}}</h3>
+    <ul>
+
+      @for (char of characters(); track char.id; let idx = $index) {
+        @if (char.power > 500) {
+          <li id="listFuertes">
+          <span>{{idx}} - {{char.name}} - </span>
+          <strong
+
+          [class.text-danger]="char.power > 9000"
+          [class.text-info]="char.power < 9000"
+
+          >({{char.power}})</strong>
+        </li>
+        }
+      }
+
+    </ul>
